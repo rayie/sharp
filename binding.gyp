@@ -51,7 +51,7 @@
     ],
     # Nested variables "pattern" borrowed from http://src.chromium.org/viewvc/chrome/trunk/src/build/common.gypi
     'variables': {
-    	'sharp-cxx11%': '0',
+      'sharp-cxx11%': '0',
       'variables': {
         'variables': {
           'conditions': [
@@ -123,6 +123,19 @@
               '<(module_root_dir)/lib/libvips.lib',
               '<(module_root_dir)/lib/libglib-2.0.lib',
               '<(module_root_dir)/lib/libgobject-2.0.lib'
+            ]
+          }],
+          ['OS == "mac"', {
+            'variables': {
+              'download_vips': '<!(node -e "require(\'./binding\').download_vips()")'
+            },
+            'libraries': [
+              '<(module_root_dir)/lib/libvips-cpp.42.dylib',
+              '<(module_root_dir)/lib/libvips.42.dylib',
+              '<(module_root_dir)/lib/libglib-2.0.0.dylib',
+              '<(module_root_dir)/lib/libgobject-2.0.0.dylib',
+              # Ensure runtime linking is relative to sharp.node
+              '-rpath \'@loader_path/../../lib\''
             ]
           }],
           ['OS == "linux"', {
