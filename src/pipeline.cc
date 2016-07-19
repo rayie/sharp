@@ -139,6 +139,7 @@ class PipelineWorker : public AsyncWorker {
         if (inputImageType != ImageType::UNKNOWN) {
           try {
             VOption *option = VImage::option()->set("access", baton->accessMethod);
+            option->set("page", baton->pageNumber); 
             if (inputImageType == ImageType::SVG || inputImageType == ImageType::PDF) {
               option->set("dpi", static_cast<double>(baton->density));
             }
