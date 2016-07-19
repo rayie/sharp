@@ -193,7 +193,6 @@ var contains = function(val, list) {
     density: DPI at which to load vector images via libmagick
 */
 Sharp.prototype._inputOptions = function(options) {
-  console.log("pageNum:",options.pageNumber);
   if (isObject(options)) {
     // Density
     if (isDefined(options.density)) {
@@ -223,11 +222,9 @@ Sharp.prototype._inputOptions = function(options) {
       this.options.pageNumber = options.pageNumber;
     }
 
-    console.log("pageNum AFTER A:",options.pageNumber);
   } else if (isDefined(options)) {
     throw new Error('Invalid input options ' + options);
   }
-    console.log("pageNum AFTER B:",options.pageNumber);
 };
 
 /*
@@ -1014,7 +1011,6 @@ Sharp.prototype._read = function() {
 */
 Sharp.prototype._pipeline = function(callback) {
   var that = this;
-  console.log("pagenum at pipeline", this.options.pageNumber);
   if (typeof callback === 'function') {
     // output=file/buffer
     if (this.options.streamIn) {
