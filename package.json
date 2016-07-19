@@ -2,32 +2,6 @@
   "name": "sharp",
   "version": "0.15.1",
   "author": "Lovell Fuller <npm@lovell.info>",
-  "contributors": [
-    "Pierre Inglebert <pierre.inglebert@gmail.com>",
-    "Jonathan Ong <jonathanrichardong@gmail.com>",
-    "Chanon Sajjamanochai <chanon.s@gmail.com>",
-    "Juliano Julio <julianojulio@gmail.com>",
-    "Daniel Gasienica <daniel@gasienica.ch>",
-    "Julian Walker <julian@fiftythree.com>",
-    "Amit Pitaru <pitaru.amit@gmail.com>",
-    "Brandon Aaron <hello.brandon@aaron.sh>",
-    "Andreas Lind <andreas@one.com>",
-    "Maurus Cuelenaere <mcuelenaere@gmail.com>",
-    "Linus Unnebäck <linus@folkdatorn.se>",
-    "Victor Mateevitsi <mvictoras@gmail.com>",
-    "Alaric Holloway <alaric.holloway@gmail.com>",
-    "Bernhard K. Weisshuhn <bkw@codingforce.com>",
-    "Chris Riley <criley@primedia.com>",
-    "David Carley <dacarley@gmail.com>",
-    "John Tobin <john@limelightmobileinc.com>",
-    "Kenton Gray <kentongray@gmail.com>",
-    "Felix Bünemann <Felix.Buenemann@gmail.com>",
-    "Samy Al Zahrani <samyalzahrany@gmail.com>",
-    "Chintan Thakkar <lemnisk8@gmail.com>",
-    "F. Orlando Galashan <frulo@gmx.de>",
-    "Kleis Auke Wolthuizen <info@kleisauke.nl>",
-    "Matt Hirsch <mhirsch@media.mit.edu>"
-  ],
   "description": "High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP and TIFF images",
   "scripts": {
     "clean": "rm -rf node_modules/ build/ include/ lib/ coverage/ test/fixtures/output.*",
@@ -40,7 +14,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/lovell/sharp"
+    "url": "git://github.com/rayie/sharp"
   },
   "keywords": [
     "jpeg",
