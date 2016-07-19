@@ -44,6 +44,7 @@ struct PipelineBaton {
   size_t booleanBufferInLength;
   int topOffsetPre;
   int leftOffsetPre;
+  int pageNumber;
   int widthPre;
   int heightPre;
   int topOffsetPost;

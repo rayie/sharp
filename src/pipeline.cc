@@ -165,6 +165,8 @@ class PipelineWorker : public AsyncWorker {
       if (inputImageType != ImageType::UNKNOWN) {
         try {
           VOption *option = VImage::option()->set("access", baton->accessMethod);
+          option->set("page", baton->pageNumber); //from ray
+
           if (inputImageType == ImageType::SVG || inputImageType == ImageType::PDF) {
             option->set("dpi", static_cast<double>(baton->density));
           }
@@ -774,6 +776,20 @@ class PipelineWorker : public AsyncWorker {
         image = Normalize(image);
       }
 
+      // Convert image to sRGB, if not already
+      if (Is16Bit(image.interpretation())) {
+        image = image.cast(VIPS_FORMAT_USHORT);
+      }
+      if (image.interpretation() != VIPS_INTERPRETATION_sRGB) {
+        image = image.colourspace(VIPS_INTERPRETATION_sRGB);
+        // Transform colours from embedded profile to sRGB profile
+        if (baton->withMetadata && HasProfile(image)) {
+          image = image.icc_transform(const_cast<char*>(srgbProfile.data()), VImage::option()
+            ->set("embedded", TRUE)
+          );
+        }
+      }
+
       // Apply bitwise boolean operation between images
       if (baton->booleanOp != VIPS_OPERATION_BOOLEAN_LAST &&
           (baton->booleanBufferInLength > 0 || !baton->booleanFileIn.empty())) {
@@ -824,20 +840,6 @@ class PipelineWorker : public AsyncWorker {
           return Error();
         }
         image = image.extract_band(baton->extractChannel);
-      }
-
-      // Convert image to sRGB, if not already
-      if (Is16Bit(image.interpretation())) {
-        image = image.cast(VIPS_FORMAT_USHORT);
-      }
-      if (image.interpretation() != VIPS_INTERPRETATION_sRGB) {
-        image = image.colourspace(VIPS_INTERPRETATION_sRGB);
-        // Transform colours from embedded profile to sRGB profile
-        if (baton->withMetadata && HasProfile(image)) {
-          image = image.icc_transform(const_cast<char*>(srgbProfile.data()), VImage::option()
-            ->set("embedded", TRUE)
-          );
-        }
       }
 
       // Override EXIF Orientation tag
@@ -1171,6 +1173,10 @@ NAN_METHOD(pipeline) {
   // Output image dimensions
   baton->width = attrAs<int32_t>(options, "width");
   baton->height = attrAs<int32_t>(options, "height");
+
+  // RIE added paging for tifs
+  baton->pageNumber = attrAs<int32_t>(options, "pageNumber");
+
   // Canvas option
   std::string canvas = attrAsStr(options, "canvas");
   if (canvas == "crop") {
@@ -1289,14 +1295,10 @@ NAN_METHOD(pipeline) {
     }
   }
   // Bandbool operation
-  if(Has(options, New("bandBoolOp").ToLocalChecked()).FromJust()) {
-    baton->bandBoolOp = GetBooleanOperation(attrAsStr(options, "bandBoolOp"));
-  }
+  baton->bandBoolOp = GetBooleanOperation(attrAsStr(options, "bandBoolOp"));
 
   // Boolean operation
-  if(Has(options, New("booleanOp").ToLocalChecked()).FromJust()) {
-    baton->booleanOp = GetBooleanOperation(attrAsStr(options, "booleanOp"));
-  }
+  baton->booleanOp = GetBooleanOperation(attrAsStr(options, "booleanOp"));
 
   // Function to notify of queue length changes
   Callback *queueListener = new Callback(

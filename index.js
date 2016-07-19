@@ -42,6 +42,7 @@ var Sharp = function(input, options) {
   stream.Duplex.call(this);
   this.options = {
     // input options
+    pageNumber: 0,
     bufferIn: [],
     streamIn: false,
     sequentialRead: false,
@@ -90,6 +91,7 @@ var Sharp = function(input, options) {
     gamma: 0,
     greyscale: false,
     normalize: 0,
+    booleanOp: null,
     booleanBufferIn: null,
     booleanFileIn: '',
     // overlay
@@ -191,6 +193,7 @@ var contains = function(val, list) {
     density: DPI at which to load vector images via libmagick
 */
 Sharp.prototype._inputOptions = function(options) {
+  console.log("pageNum:",options.pageNumber);
   if (isObject(options)) {
     // Density
     if (isDefined(options.density)) {
@@ -215,9 +218,16 @@ Sharp.prototype._inputOptions = function(options) {
         throw new Error('Expected width, height and channels for raw pixel input');
       }
     }
+
+    if (isDefined(options.pageNumber)){
+      this.options.pageNumber = options.pageNumber;
+    }
+
+    console.log("pageNum AFTER A:",options.pageNumber);
   } else if (isDefined(options)) {
     throw new Error('Invalid input options ' + options);
   }
+    console.log("pageNum AFTER B:",options.pageNumber);
 };
 
 /*
@@ -1004,6 +1014,7 @@ Sharp.prototype._read = function() {
 */
 Sharp.prototype._pipeline = function(callback) {
   var that = this;
+  console.log("pagenum at pipeline", this.options.pageNumber);
   if (typeof callback === 'function') {
     // output=file/buffer
     if (this.options.streamIn) {
