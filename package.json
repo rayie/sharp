@@ -45,10 +45,10 @@
     "test": "semistandard && cc && nyc --reporter=lcov --branches=99 mocha --slow=5000 --timeout=60000 ./test/unit/*.js",
     "test-leak": "./test/leak/leak.sh",
     "test-packaging": "./packaging/test-linux-x64.sh",
-    "docs": "for m in constructor input resize composite operation colour channel output utility; do documentation build --shallow --format=md lib/$m.js >docs/api-$m.md; done"
+    "docs": "for m in constructor input resize composite operation colour channel output utility; do documentation build --shallow --format=md lib/$m.js >docs/api-$m.md; done",
+  	"install": "node-gyp configure; node-gyp build"
   },
   "main": "lib/index.js",
-  "install": "node-gyp configure; node-gyp build",
   "repository": {
     "type": "git",
     "url": "git://github.com/lovell/sharp"
@@ -69,7 +69,7 @@
     "vips"
   ],
   "dependencies": {
-    "node-gyp": ">= 0.9.6",
+    "node-gyp": ">= 3.4.0",
     "caw": "^2.0.0",
     "color": "^2.0.0",
     "detect-libc": "^0.2.0",
