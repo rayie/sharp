@@ -71,6 +71,15 @@ class PipelineWorker : public Nan::AsyncWorker {
       vips::VImage image;
       ImageType inputImageType;
       std::tie(image, inputImageType) = sharp::OpenInput(baton->input, baton->accessMethod);
+		
+			if ( baton->input->page > 0){
+      	vips::VOption *option = VImage::option()->set("page",  baton->input->page);
+      	VipsBlob *blob = vips_blob_new(nullptr, baton->input->buffer, baton->input->bufferLength);
+      	if (inputImageType == ImageType::TIFF) {
+        	// Reload TIFF Buffer 
+        	image = VImage::tiffload_buffer(blob, option);
+				}
+			}
 
       // Limit input images to a given number of pixels, where pixels = width * height
       // Ignore if 0
@@ -315,6 +324,7 @@ class PipelineWorker : public Nan::AsyncWorker {
           ->set("input_profile", profileMap[VIPS_INTERPRETATION_CMYK].data())
           ->set("intent", VIPS_INTENT_PERCEPTUAL));
       }
+
 
       // Flatten image to remove alpha channel
       if (baton->flatten && HasAlpha(image)) {

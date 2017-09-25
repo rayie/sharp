@@ -56,6 +56,11 @@ namespace sharp {
     if (HasAttr(input, "density")) {
       descriptor->density = AttrTo<uint32_t>(input, "density");
     }
+
+    if (HasAttr(input, "page")) {
+      descriptor->page = AttrTo<uint32_t>(input, "page");
+    }
+
     // Raw pixel input
     if (HasAttr(input, "rawChannels")) {
       descriptor->rawChannels = AttrTo<uint32_t>(input, "rawChannels");
@@ -220,6 +225,9 @@ namespace sharp {
         if (imageType != ImageType::UNKNOWN) {
           try {
             vips::VOption *option = VImage::option()->set("access", accessMethod);
+						//option->set("page", static_cast<int>(descriptor->page));
+						
+						option->set("page", static_cast<int>(descriptor->page));
             if (imageType == ImageType::SVG || imageType == ImageType::PDF) {
               option->set("dpi", static_cast<double>(descriptor->density));
             }
@@ -257,6 +265,7 @@ namespace sharp {
         if (imageType != ImageType::UNKNOWN) {
           try {
             vips::VOption *option = VImage::option()->set("access", accessMethod);
+
             if (imageType == ImageType::SVG || imageType == ImageType::PDF) {
               option->set("dpi", static_cast<double>(descriptor->density));
             }

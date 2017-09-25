@@ -49,6 +49,7 @@ namespace sharp {
     char *buffer;
     size_t bufferLength;
     int density;
+    int page;
     int rawChannels;
     int rawWidth;
     int rawHeight;
@@ -61,6 +62,7 @@ namespace sharp {
       buffer(nullptr),
       bufferLength(0),
       density(72),
+      page(0),
       rawChannels(0),
       rawWidth(0),
       rawHeight(0),
