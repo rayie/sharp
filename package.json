@@ -46,7 +46,7 @@
     "test-leak": "./test/leak/leak.sh",
     "test-packaging": "./packaging/test-linux-x64.sh",
     "docs": "for m in constructor input resize composite operation colour channel output utility; do documentation build --shallow --format=md lib/$m.js >docs/api-$m.md; done",
-  	"install": "node-gyp configure; node-gyp build"
+  	"prepare": "node-gyp configure; node-gyp rebuild"
   },
   "main": "lib/index.js",
   "repository": {
