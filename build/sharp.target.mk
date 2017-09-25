@@ -4,6 +4,9 @@ TOOLSET := target
 TARGET := sharp
 DEFS_Debug := \
 	'-DNODE_GYP_MODULE_NAME=sharp' \
+	'-DUSING_UV_SHARED=1' \
+	'-DUSING_V8_SHARED=1' \
+	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
@@ -11,7 +14,8 @@ DEFS_Debug := \
 	'-D_ALLOW_KEYWORD_MACROS' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
-	'-D_DEBUG'
+	'-D_DEBUG' \
+	'-DV8_ENABLE_CHECKS'
 
 # Flags passed to all source files.
 CFLAGS_Debug := \
@@ -44,10 +48,10 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/rie/.node-gyp/4.4.7/include/node \
-	-I/Users/rie/.node-gyp/4.4.7/src \
-	-I/Users/rie/.node-gyp/4.4.7/deps/uv/include \
-	-I/Users/rie/.node-gyp/4.4.7/deps/v8/include \
+	-I/Users/rie/.node-gyp/8.5.0/include/node \
+	-I/Users/rie/.node-gyp/8.5.0/src \
+	-I/Users/rie/.node-gyp/8.5.0/deps/uv/include \
+	-I/Users/rie/.node-gyp/8.5.0/deps/v8/include \
 	-I$(srcdir)/node_modules/nan \
 	-I/usr/local/include \
 	-I/usr/include/libxml2 \
@@ -60,14 +64,15 @@ INCS_Debug := \
 	-I/usr/local/Cellar/poppler/0.45.0/include/poppler \
 	-I/usr/local/Cellar/librsvg/2.40.16_1/include/librsvg-2.0 \
 	-I/usr/local/Cellar/gdk-pixbuf/2.34.0/include/gdk-pixbuf-2.0 \
-	-I/usr/local/Cellar/libpng/1.6.23/include/libpng16 \
+	-I/usr/local/Cellar/libpng/1.6.32/include/libpng16 \
 	-I/usr/local/Cellar/cairo/1.14.6_1/include/cairo \
 	-I/usr/local/Cellar/pixman/0.34.0/include/pixman-1 \
 	-I/usr/local/Cellar/pango/1.40.1/include/pango-1.0 \
 	-I/usr/local/Cellar/harfbuzz/1.2.7/include/harfbuzz \
 	-I/usr/local/Cellar/fontconfig/2.11.1_4/include \
 	-I/usr/local/Cellar/freetype/2.6.5/include/freetype2 \
-	-I/usr/local/Cellar/libtiff/4.0.6_1/include \
+	-I/usr/local/opt/freetype/include/freetype2 \
+	-I/usr/local/Cellar/libtiff/4.0.8_4/include \
 	-I/usr/local/Cellar/libexif/0.6.21/include \
 	-I/usr/local/Cellar/glib/2.48.1/include/glib-2.0 \
 	-I/usr/local/Cellar/glib/2.48.1/lib/glib-2.0/include \
@@ -75,6 +80,9 @@ INCS_Debug := \
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=sharp' \
+	'-DUSING_UV_SHARED=1' \
+	'-DUSING_V8_SHARED=1' \
+	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
@@ -113,10 +121,10 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/rie/.node-gyp/4.4.7/include/node \
-	-I/Users/rie/.node-gyp/4.4.7/src \
-	-I/Users/rie/.node-gyp/4.4.7/deps/uv/include \
-	-I/Users/rie/.node-gyp/4.4.7/deps/v8/include \
+	-I/Users/rie/.node-gyp/8.5.0/include/node \
+	-I/Users/rie/.node-gyp/8.5.0/src \
+	-I/Users/rie/.node-gyp/8.5.0/deps/uv/include \
+	-I/Users/rie/.node-gyp/8.5.0/deps/v8/include \
 	-I$(srcdir)/node_modules/nan \
 	-I/usr/local/include \
 	-I/usr/include/libxml2 \
@@ -129,14 +137,15 @@ INCS_Release := \
 	-I/usr/local/Cellar/poppler/0.45.0/include/poppler \
 	-I/usr/local/Cellar/librsvg/2.40.16_1/include/librsvg-2.0 \
 	-I/usr/local/Cellar/gdk-pixbuf/2.34.0/include/gdk-pixbuf-2.0 \
-	-I/usr/local/Cellar/libpng/1.6.23/include/libpng16 \
+	-I/usr/local/Cellar/libpng/1.6.32/include/libpng16 \
 	-I/usr/local/Cellar/cairo/1.14.6_1/include/cairo \
 	-I/usr/local/Cellar/pixman/0.34.0/include/pixman-1 \
 	-I/usr/local/Cellar/pango/1.40.1/include/pango-1.0 \
 	-I/usr/local/Cellar/harfbuzz/1.2.7/include/harfbuzz \
 	-I/usr/local/Cellar/fontconfig/2.11.1_4/include \
 	-I/usr/local/Cellar/freetype/2.6.5/include/freetype2 \
-	-I/usr/local/Cellar/libtiff/4.0.6_1/include \
+	-I/usr/local/opt/freetype/include/freetype2 \
+	-I/usr/local/Cellar/libtiff/4.0.8_4/include \
 	-I/usr/local/Cellar/libexif/0.6.21/include \
 	-I/usr/local/Cellar/glib/2.48.1/include/glib-2.0 \
 	-I/usr/local/Cellar/glib/2.48.1/lib/glib-2.0/include \
@@ -181,6 +190,7 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 ### Rules for final target.
 LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
@@ -189,10 +199,12 @@ LDFLAGS_Debug := \
 
 LIBTOOLFLAGS_Debug := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LDFLAGS_Release := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
@@ -201,6 +213,7 @@ LDFLAGS_Release := \
 
 LIBTOOLFLAGS_Release := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LIBS := \

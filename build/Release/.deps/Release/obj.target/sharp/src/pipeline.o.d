@@ -1,4 +1,4 @@
-cmd_Release/obj.target/sharp/src/pipeline.o := c++ '-DNODE_GYP_MODULE_NAME=sharp' '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-D_GLIBCXX_USE_CXX11_ABI=0' '-D_ALLOW_KEYWORD_MACROS' '-DBUILDING_NODE_EXTENSION' -I/Users/rie/.node-gyp/4.4.7/include/node -I/Users/rie/.node-gyp/4.4.7/src -I/Users/rie/.node-gyp/4.4.7/deps/uv/include -I/Users/rie/.node-gyp/4.4.7/deps/v8/include -I../node_modules/nan -I/usr/local/include -I/usr/include/libxml2 -I/usr/local/Cellar/vips/8.3.1/include -I/usr/local/Cellar/libgsf/1.14.39/include/libgsf-1 -I/usr/local/Cellar/fftw/3.3.4_1/include -I/usr/local/Cellar/orc/0.4.25/include/orc-0.4 -I/usr/local/Cellar/little-cms2/2.7/include -I/usr/local/Cellar/poppler/0.45.0/include/poppler/glib -I/usr/local/Cellar/poppler/0.45.0/include/poppler -I/usr/local/Cellar/librsvg/2.40.16_1/include/librsvg-2.0 -I/usr/local/Cellar/gdk-pixbuf/2.34.0/include/gdk-pixbuf-2.0 -I/usr/local/Cellar/libpng/1.6.23/include/libpng16 -I/usr/local/Cellar/cairo/1.14.6_1/include/cairo -I/usr/local/Cellar/pixman/0.34.0/include/pixman-1 -I/usr/local/Cellar/pango/1.40.1/include/pango-1.0 -I/usr/local/Cellar/harfbuzz/1.2.7/include/harfbuzz -I/usr/local/Cellar/fontconfig/2.11.1_4/include -I/usr/local/Cellar/freetype/2.6.5/include/freetype2 -I/usr/local/Cellar/libtiff/4.0.6_1/include -I/usr/local/Cellar/libexif/0.6.21/include -I/usr/local/Cellar/glib/2.48.1/include/glib-2.0 -I/usr/local/Cellar/glib/2.48.1/lib/glib-2.0/include -I/usr/local/opt/gettext/include  -Os -gdwarf-2 -mmacosx-version-min=10.7 -arch x86_64 -Wall -Wendif-labels -W -Wno-unused-parameter -std=c++11 -stdlib=libc++ -fno-threadsafe-statics -fexceptions -Wall -O3 -MMD -MF ./Release/.deps/Release/obj.target/sharp/src/pipeline.o.d.raw   -c -o Release/obj.target/sharp/src/pipeline.o ../src/pipeline.cc
+cmd_Release/obj.target/sharp/src/pipeline.o := c++ '-DNODE_GYP_MODULE_NAME=sharp' '-DUSING_UV_SHARED=1' '-DUSING_V8_SHARED=1' '-DV8_DEPRECATION_WARNINGS=1' '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-D_GLIBCXX_USE_CXX11_ABI=0' '-D_ALLOW_KEYWORD_MACROS' '-DBUILDING_NODE_EXTENSION' -I/Users/rie/.node-gyp/8.5.0/include/node -I/Users/rie/.node-gyp/8.5.0/src -I/Users/rie/.node-gyp/8.5.0/deps/uv/include -I/Users/rie/.node-gyp/8.5.0/deps/v8/include -I../node_modules/nan -I/usr/local/include -I/usr/include/libxml2 -I/usr/local/Cellar/vips/8.3.1/include -I/usr/local/Cellar/libgsf/1.14.39/include/libgsf-1 -I/usr/local/Cellar/fftw/3.3.4_1/include -I/usr/local/Cellar/orc/0.4.25/include/orc-0.4 -I/usr/local/Cellar/little-cms2/2.7/include -I/usr/local/Cellar/poppler/0.45.0/include/poppler/glib -I/usr/local/Cellar/poppler/0.45.0/include/poppler -I/usr/local/Cellar/librsvg/2.40.16_1/include/librsvg-2.0 -I/usr/local/Cellar/gdk-pixbuf/2.34.0/include/gdk-pixbuf-2.0 -I/usr/local/Cellar/libpng/1.6.32/include/libpng16 -I/usr/local/Cellar/cairo/1.14.6_1/include/cairo -I/usr/local/Cellar/pixman/0.34.0/include/pixman-1 -I/usr/local/Cellar/pango/1.40.1/include/pango-1.0 -I/usr/local/Cellar/harfbuzz/1.2.7/include/harfbuzz -I/usr/local/Cellar/fontconfig/2.11.1_4/include -I/usr/local/Cellar/freetype/2.6.5/include/freetype2 -I/usr/local/opt/freetype/include/freetype2 -I/usr/local/Cellar/libtiff/4.0.8_4/include -I/usr/local/Cellar/libexif/0.6.21/include -I/usr/local/Cellar/glib/2.48.1/include/glib-2.0 -I/usr/local/Cellar/glib/2.48.1/lib/glib-2.0/include -I/usr/local/opt/gettext/include  -Os -gdwarf-2 -mmacosx-version-min=10.7 -arch x86_64 -Wall -Wendif-labels -W -Wno-unused-parameter -std=c++11 -stdlib=libc++ -fno-threadsafe-statics -fexceptions -Wall -O3 -MMD -MF ./Release/.deps/Release/obj.target/sharp/src/pipeline.o.d.raw   -c -o Release/obj.target/sharp/src/pipeline.o ../src/pipeline.cc
 Release/obj.target/sharp/src/pipeline.o: ../src/pipeline.cc \
   /usr/local/Cellar/vips/8.3.1/include/vips/vips8 \
   /usr/local/Cellar/vips/8.3.1/include/vips/version.h \
@@ -144,19 +144,20 @@ Release/obj.target/sharp/src/pipeline.o: ../src/pipeline.cc \
   /usr/local/Cellar/vips/8.3.1/include/vips/VImage8.h \
   /usr/local/Cellar/vips/8.3.1/include/vips/vips-operators.h \
   /usr/local/Cellar/vips/8.3.1/include/vips/VInterpolate8.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/node.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/v8.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/v8-version.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/v8config.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/node_version.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/node_buffer.h \
-  ../node_modules/nan/nan.h /Users/rie/.node-gyp/4.4.7/include/node/uv.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/uv-errno.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/uv-version.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/uv-unix.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/uv-threadpool.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/uv-darwin.h \
-  /Users/rie/.node-gyp/4.4.7/include/node/node_object_wrap.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/node.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/v8.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/v8-version.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/v8config.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/node_version.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/node_buffer.h \
+  ../node_modules/nan/nan.h /Users/rie/.node-gyp/8.5.0/include/node/uv.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/uv-errno.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/uv-version.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/uv-unix.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/uv-threadpool.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/uv-darwin.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/pthread-barrier.h \
+  /Users/rie/.node-gyp/8.5.0/include/node/node_object_wrap.h \
   ../node_modules/nan/nan_callbacks.h \
   ../node_modules/nan/nan_callbacks_12_inl.h \
   ../node_modules/nan/nan_maybe_43_inl.h \
@@ -313,20 +314,21 @@ Release/obj.target/sharp/src/pipeline.o: ../src/pipeline.cc \
 /usr/local/Cellar/vips/8.3.1/include/vips/VImage8.h:
 /usr/local/Cellar/vips/8.3.1/include/vips/vips-operators.h:
 /usr/local/Cellar/vips/8.3.1/include/vips/VInterpolate8.h:
-/Users/rie/.node-gyp/4.4.7/include/node/node.h:
-/Users/rie/.node-gyp/4.4.7/include/node/v8.h:
-/Users/rie/.node-gyp/4.4.7/include/node/v8-version.h:
-/Users/rie/.node-gyp/4.4.7/include/node/v8config.h:
-/Users/rie/.node-gyp/4.4.7/include/node/node_version.h:
-/Users/rie/.node-gyp/4.4.7/include/node/node_buffer.h:
+/Users/rie/.node-gyp/8.5.0/include/node/node.h:
+/Users/rie/.node-gyp/8.5.0/include/node/v8.h:
+/Users/rie/.node-gyp/8.5.0/include/node/v8-version.h:
+/Users/rie/.node-gyp/8.5.0/include/node/v8config.h:
+/Users/rie/.node-gyp/8.5.0/include/node/node_version.h:
+/Users/rie/.node-gyp/8.5.0/include/node/node_buffer.h:
 ../node_modules/nan/nan.h:
-/Users/rie/.node-gyp/4.4.7/include/node/uv.h:
-/Users/rie/.node-gyp/4.4.7/include/node/uv-errno.h:
-/Users/rie/.node-gyp/4.4.7/include/node/uv-version.h:
-/Users/rie/.node-gyp/4.4.7/include/node/uv-unix.h:
-/Users/rie/.node-gyp/4.4.7/include/node/uv-threadpool.h:
-/Users/rie/.node-gyp/4.4.7/include/node/uv-darwin.h:
-/Users/rie/.node-gyp/4.4.7/include/node/node_object_wrap.h:
+/Users/rie/.node-gyp/8.5.0/include/node/uv.h:
+/Users/rie/.node-gyp/8.5.0/include/node/uv-errno.h:
+/Users/rie/.node-gyp/8.5.0/include/node/uv-version.h:
+/Users/rie/.node-gyp/8.5.0/include/node/uv-unix.h:
+/Users/rie/.node-gyp/8.5.0/include/node/uv-threadpool.h:
+/Users/rie/.node-gyp/8.5.0/include/node/uv-darwin.h:
+/Users/rie/.node-gyp/8.5.0/include/node/pthread-barrier.h:
+/Users/rie/.node-gyp/8.5.0/include/node/node_object_wrap.h:
 ../node_modules/nan/nan_callbacks.h:
 ../node_modules/nan/nan_callbacks_12_inl.h:
 ../node_modules/nan/nan_maybe_43_inl.h:
