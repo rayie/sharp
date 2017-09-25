@@ -72,7 +72,7 @@ class PipelineWorker : public Nan::AsyncWorker {
       ImageType inputImageType;
       std::tie(image, inputImageType) = sharp::OpenInput(baton->input, baton->accessMethod);
 		
-			if ( baton->input->page > 0){
+			if ( baton->input->page ){
       	vips::VOption *option = VImage::option()->set("page",  baton->input->page);
       	VipsBlob *blob = vips_blob_new(nullptr, baton->input->buffer, baton->input->bufferLength);
       	if (inputImageType == ImageType::TIFF) {

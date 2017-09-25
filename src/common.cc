@@ -225,9 +225,10 @@ namespace sharp {
         if (imageType != ImageType::UNKNOWN) {
           try {
             vips::VOption *option = VImage::option()->set("access", accessMethod);
-						//option->set("page", static_cast<int>(descriptor->page));
-						
-						option->set("page", static_cast<int>(descriptor->page));
+
+            if (imageType == ImageType::TIFF || descriptor->page) {
+							option->set("page", static_cast<int>(descriptor->page));
+						}
             if (imageType == ImageType::SVG || imageType == ImageType::PDF) {
               option->set("dpi", static_cast<double>(descriptor->density));
             }
@@ -266,6 +267,9 @@ namespace sharp {
           try {
             vips::VOption *option = VImage::option()->set("access", accessMethod);
 
+            if (imageType == ImageType::TIFF || descriptor->page) {
+							option->set("page", static_cast<int>(descriptor->page));
+						}
             if (imageType == ImageType::SVG || imageType == ImageType::PDF) {
               option->set("dpi", static_cast<double>(descriptor->density));
             }
